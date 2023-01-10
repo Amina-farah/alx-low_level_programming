@@ -1,27 +1,29 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <ctype.h>
-#include <string.h>
 /**
- * check_num - check - string there are digit
- * @str: array str
- * Return: Always 0 (Success)
+ * main - main funct
+ * @argc: param count
+ * @argv: param poiter
+ * Return: int
  */
-int check_num(char *str)
+int main(int argc, char *argv[])
 {
-	/*Declaring variables*/
-	unsigned int count;
-
-	count = 0;
-	while (count < strlen(str)) /*count string*/
-
+	int i, j, sum = 0;
+	
+	for (i = 1; i < argc; i++)
 	{
-		if (!isdigit(str[count])) /*check if str there are digit*/
+		for (j = 0; argv[i][j] != '\0'; j++)
 		{
-			return (0);
+			if (!isdigit(argv[i][j]))
+			{
+				printf("Error\n");
+				return (1);
+			}
 		}
-
-		count++;
-	}
-	return (1);
+			sum += atoi(argv[i]);
+		}
+		printf("%d\n", sum);
+		
+		return (0);
 }
