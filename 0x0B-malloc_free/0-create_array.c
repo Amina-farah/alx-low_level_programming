@@ -1,18 +1,23 @@
-#include <stdio.h>
-#include <stdlib.h>
 #include "main.h"
+#include <stdlib.h>
 /**
- * malloc_checked - A function that allocates memory using malloc.
- * @b: integer variable dat holds the memory size
- * Return: 0 means program was successful
+ * create_array - create array of size size and assign char c
+ * @size: size of array
+ * @c: char to assign
+ * Description: creat array of size size and assign char c
+ * Return: pointer to array, NULL if fail
  */
-void *malloc_checked(unsigned int b)
-{
-	void *ptr;
 
-	ptr = malloc(b);
-	if (ptr == NULL)
-		exit(98);
-	
-	return (ptr);
+char *create_array(unsigned int size, char c)
+{
+	char *str;
+	unsigned int i;
+
+	str = malloc(sizeof(char) * size);
+	if (size == 0 || str == NULL)
+		return (NULL);
+
+	for (i = 0; i < size; i++)
+		str[i] = c;
+	return (str);
 }
