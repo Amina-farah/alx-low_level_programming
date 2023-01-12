@@ -1,48 +1,68 @@
 #include "main.h"
-#include <stdlib.h>
 
 /**
- * str_concat - get ends of input and add together for size
- * @s1: input one to concat
- * @s2: input two to concat
- *
- * Return: concat of s1 and s2
+ * _strlen - count array
+ * @s: array of elements
+ * Return: 1
  */
 
-char *str_concat(char *s1, char *s2)
+int _strlen(char *s)
 {
-	char *conct;
-	int i, ci;
+	unsigned int i;
 
-	if (s1 == NULL)
-		s1 = "";
-	if (s2 == NULL)
-		s2 = "";
-
-	i = ci = 0;
-	while (s1[i] != '\0')
-		i++;
-
-	while (s2[ci] != '\0')
-		ci++;
-	
-	conct = malloc(sizeof(char) * (i + ci + 1));
-
-	if (conct == NULL)
-		return (NULL);
-	i = ci = 0;
-	while (s1[i] != '\0')
+	i = 0;
+	while (s[i] != '\0') /*count character of string*/
 	{
-		conct[i] = s1[i];
 		i++;
 	}
-	while (s2[ci] != '\0')
-	{
-		conct[i] = s2[ci];
-		i++, ci++;
-	}
-	conct[i] = '\0';
-	return (conct);
+
+	return (i);
 }
+/**
+ * _strcpy - copy arrays
+ * @src: array of elements
+ * @dest: dest array
+ * Return: dest
+ */
 
+char *_strcpy(char *dest, char *src)
+{
+	int i = 0;
+	
+	while (src[i] != '\0')
+	{
+		dest[i] = src[i];
+		i++;
+	}
+	dest[i] = '\0'
+		;
+	return (dest);
+}
+/**
+ * _strdup - array for prints a string
+ * @str: array of elements
+ * Return: pointer
+ */
 
+char *_strdup(char *str)
+{
+	char *dst;
+	unsigned int size;
+
+	if (str == 0)
+	{
+		return (NULL);
+	}
+
+	size = _strlen(str) + 1;
+
+	dst = (char *) malloc(size * sizeof(char));
+
+	if (dst == 0)
+	{
+		return (NULL);
+	}
+
+	_strcpy(dst, str);
+	return (dst);
+}
